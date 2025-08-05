@@ -1,14 +1,14 @@
-:{$PORT}
+:{$PORT} {
+    root * /var/www/html/public
 
-root * /var/www/html/public
+    @acme_challenge {
+        path /.well-known/acme-challenge/*
+    }
 
-@acme_challenge {
-    path /.well-known/acme-challenge/*
-}
+    handle @acme_challenge {
+        file_server
+    }
 
-handle @acme_challenge {
+    php_fastcgi localhost:9000
     file_server
 }
-
-php_fastcgi localhost:9000
-file_server

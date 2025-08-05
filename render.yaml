@@ -1,11 +1,14 @@
 services:
     - type: web
-      name: formulaire-symfony
+      name: formulaire-symfony-app
       env: docker
       plan: free
+      autoDeploy: true
+      region: frankfurt
+      dockerContext: .
       dockerfilePath: ./Dockerfile
       envVars:
           - key: APP_ENV
             value: prod
-          - key: PORT
-            value: 10000
+          - key: APP_SECRET
+            value: ton_secret_generé
