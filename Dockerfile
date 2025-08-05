@@ -33,6 +33,9 @@ COPY . .
 RUN composer install --no-dev --optimize-autoloader --no-scripts
 
 
+RUN mkdir -p var && mkdir -p vendor
+
+
 RUN chown -R www-data:www-data var vendor
 
 
