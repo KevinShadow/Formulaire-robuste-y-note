@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formulaire Client</title>
+  <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
+</head>
+<body>
+  <div class="form-container">
+    <div style="text-align:right; margin-bottom:10px">
+      <select id="lang-switcher">
+        <option value="fr">Français</option>
+        <option value="en">English</option>
+      </select>
+    </div>
+    <form id="client-form" method="POST" action="/submit">
+      <h2 id="form-title">Enregistrement Client</h2>
+
+        <input type="hidden" name="_token" value="{{ csrf_token('user_form') }}" />
+
+      {% if errors is defined and errors %}
+        
+        <script>
+            
+            setTimeout(() => {
+            document.querySelectorAll('.error').forEach(el => el.remove());
+            }, 5000);
+        </script>
+      {% endif %}
+
+      <label for="fullName" id="label-fullName">Nom complet</label>
+      <input type="text" id="fullName" name="fullName"
+             value="{{ data.fullName ?? ''|e }}" required />
+             {% if errors.fullName is defined %}
+                <div class="error">{{ errors.fullName }}</div>
+            {% endif %}
+
+      <label for="email" id="label-email">Email</label>
+      <input type="email" id="email" name="email"
+             value="{{ data.email ?? ''|e }}" required />
+             {% if errors.email is defined %}
+                <div class="error">{{ errors.email }}</div>
+            {% endif %}
+
+      <label for="phone" id="label-phone">Téléphone</label>
+      <input type="tel" id="phone" name="phone"
+             value="{{ data.phone ?? ''|e }}" required />
+                {% if errors.phone is defined %}
+                    <div class="error">{{ errors.phone }}</div>
+                {% endif %}
+
+      <label for="dob" id="label-dob">Date de naissance</label>
+      <input type="date" id="dob" name="dob"
+             value="{{ data.dob ?? ''|e }}" required />
+                {% if errors.dob is defined %}
+                    <div class="error">{{ errors.dob }}</div>
+                {% endif %}
+
+      <label for="address" id="label-address">Adresse</label>
+      <input type="text" id="address" name="address"
+             value="{{ data.address ?? ''|e }}" autocomplete="off" required />
+                {% if errors.address is defined %}
+                    <div class="error">{{ errors.address }}</div>
+                {% endif %}
+      <ul id="address-suggestions"></ul>
+
+      <button type="submit" id="submit-btn">Soumettre</button>
+    </form>
+  </div>
+
+  <script src="{{ asset('assets/js/script.js') }}"></script>
+  <script src="{{ asset('assets/js/lang.js') }}"></script>
+</body>
+</html>

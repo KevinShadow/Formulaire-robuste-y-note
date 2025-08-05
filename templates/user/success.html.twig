@@ -1,0 +1,13 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Succès{% endblock %}
+
+{% block body %}
+    <h1>Utilisateur créé avec succès</h1>
+    <p>Nom : {{ user.fullName }}</p>
+    <p>Email : {{ user.email }}</p>
+    <p>Téléphone : {{ user.phone }}</p>
+    <p>Date de naissance : {{ user.dob|date('Y-m-d') }}</p>
+    <p>Adresse : {{ user.address }}</p>
+{% endblock %}

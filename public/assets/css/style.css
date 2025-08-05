@@ -1,0 +1,134 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 420px;
+    padding: 20px;
+    margin: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+input,
+button {
+    width: 100%;
+    margin-top: 5px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#address-suggestions {
+    list-style: none;
+    padding: 0;
+    margin-top: 5px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 0 0 5px 5px;
+    max-height: 150px;
+    overflow-y: auto;
+    position: absolute;
+    z-index: 999;
+}
+
+#address-suggestions li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+#address-suggestions li:hover {
+    background-color: #eee;
+}
+
+.day-mode {
+    background-color: #e0f0ff;
+    color: #000;
+}
+
+.day-mode .form-container {
+    background-color: #fff;
+}
+
+.day-mode input,
+.day-mode button {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #aaa;
+}
+
+.night-mode {
+    background-color: #1e1e1e;
+    color: #f5f5f5;
+}
+
+.night-mode .form-container {
+    background-color: #2c2c2c;
+}
+
+.night-mode input,
+.night-mode button {
+    background-color: #3a3a3a;
+    color: #f5f5f5;
+    border: 1px solid #555;
+}
+
+.night-mode #address-suggestions {
+    background-color: #333;
+    color: #fff;
+    border-color: #555;
+}
+
+.night-mode #address-suggestions li:hover {
+    background-color: #444;
+}
+
+@media (max-width: 500px) {
+    .form-container {
+        padding: 15px;
+        margin: 10px;
+    }
+
+    input,
+    button {
+        font-size: 15px;
+        padding: 9px;
+    }
+
+    form h2 {
+        font-size: 20px;
+    }
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 4px;
+    margin-bottom: 10px;
+    text-align: center;
+}

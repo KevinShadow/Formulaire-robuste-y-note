@@ -1,0 +1,30 @@
+[
+    {
+        "fullName": "kevin",
+        "email": "etudiant@gmail.com",
+        "phone": "699999999",
+        "dob": "2022-02-08",
+        "address": "Yaound\u00e9, Cameroun"
+    },
+    {
+        "fullName": "user1",
+        "email": "etudiant@gmail.com",
+        "phone": "699999999",
+        "dob": "2023-08-08",
+        "address": "Yaound\u00e9, Cameroun"
+    },
+    {
+        "fullName": "user1",
+        "email": "etudiant@gmail.com",
+        "phone": "699999999",
+        "dob": "2021-10-19",
+        "address": "Yaound\u00e9, Cameroun"
+    },
+    {
+        "fullName": "user1",
+        "email": "etudiant@gmail.com",
+        "phone": "699999999",
+        "dob": "2021-10-19",
+        "address": "Yaound\u00e9, Cameroun"
+    }
+]

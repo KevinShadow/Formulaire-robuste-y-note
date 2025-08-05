@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formulaire Client</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="form-container">
+    <form id="client-form" method="POST" action="/submit">
+      <h2>Enregistrement Client</h2>
+
+      <label for="fullName">Nom complet</label>
+      <input type="text" name="fullName" id="fullName" required minlength="3" maxlength="50" />
+
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" required />
+
+      <label for="phone">Téléphone</label>
+      <input type="text" name="phone" id="phone" pattern="\d{9,12}" required />
+
+      <label for="dob">Date de naissance</label>
+      <input type="date" name="dob" id="dob" required />
+
+      <label for="address">Adresse</label>
+      <input type="text" name="address" id="address" autocomplete="off" required />
+      <ul id="address-suggestions"></ul>
+
+      <button type="submit">Soumettre</button>
+    </form>
+  </div>
+
+  <script src="/script.js"></script>
+</body>
+</html>
