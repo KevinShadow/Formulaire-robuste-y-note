@@ -47,4 +47,6 @@ EXPOSE 80
 RUN mkdir -p /var/run/php
 
 
-CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile"]
+#CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile"]
+CMD ["sh", "-c", "php-fpm & caddy run --config /etc/caddy/Caddyfile"]
+
