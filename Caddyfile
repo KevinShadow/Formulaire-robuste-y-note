@@ -4,10 +4,4 @@ formulaire-robuste-y-note.onrender.com {
     php_fastcgi localhost:9000
 
     file_server
-
-    tls {
-        issuer acme {
-            challenge http
-        }
-    }
 }
