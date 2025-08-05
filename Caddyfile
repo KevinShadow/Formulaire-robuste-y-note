@@ -2,5 +2,5 @@
 
 root * /var/www/html/public
 
-php_fastcgi localhost:9000
+php_fastcgi unix//var/run/php/php-fpm.sock
 file_server
