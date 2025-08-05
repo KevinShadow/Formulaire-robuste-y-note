@@ -1,0 +1,11 @@
+services:
+    - type: web
+      name: formulaire-symfony
+      env: docker
+      plan: free
+      dockerfilePath: ./Dockerfile
+      envVars:
+          - key: APP_ENV
+            value: prod
+          - key: PORT
+            value: 10000
