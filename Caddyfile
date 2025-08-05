@@ -1,6 +1,13 @@
-formulaire-robuste-y-note.onrender.com
+formulaire-robuste-y-note.onrender.com {
+    root * /var/www/html/public
 
-root * /var/www/html/public
+    php_fastcgi localhost:9000
 
-php_fastcgi localhost:9000
-file_server
+    file_server
+
+    tls {
+        issuer acme {
+            challenge http
+        }
+    }
+}
