@@ -1,4 +1,3 @@
-
 FROM php:8.2-fpm
 
 
@@ -6,27 +5,27 @@ RUN apt-get update && apt-get install -y \
     libicu-dev \
     libonig-dev \
     libxml2-dev \
-    zip \
+    libzip-dev \
     unzip \
+    zip \
     git \
     curl \
-    libzip-dev \
     libpq-dev \
+    gnupg \
     && docker-php-ext-install intl pdo pdo_pgsql zip
 
-
+# Installer Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Installer Caddy (serveur HTTP)
-RUN apt-get install -y debian-keyring debian-archive-keyring apt-transport-https && \
-    curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | apt-key add - && \
-    curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | tee /etc/apt/sources.list.d/caddy-stable.list && \
+#  Installer Caddy sans `apt-key`
+RUN curl -1sLf https://dl.cloudsmith.io/public/caddy/stable/gpg.key | gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg && \
+    echo "deb [signed-by=/usr/share/keyrings/caddy-stable-archive-keyring.gpg] https://dl.cloudsmith.io/public/caddy/stable/deb/debian any-version main" > /etc/apt/sources.list.d/caddy-stable.list && \
     apt-get update && apt-get install -y caddy
 
 
 WORKDIR /var/www/html
 
-# Copier tout le projet
+
 COPY . .
 
 
