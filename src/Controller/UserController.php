@@ -11,6 +11,12 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class UserController extends AbstractController
 {
+    #[Route('/', name: 'app_home')]
+    public function home(): Response{
+        return $this->render('user/home.html.twig', [
+            'controller_name' => 'UserController',
+        ]);
+    }
     #[Route('/user', name: 'app_user')]
     public function index(): Response
     {
