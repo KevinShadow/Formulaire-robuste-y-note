@@ -29,6 +29,9 @@ WORKDIR /var/www/html
 
 COPY . .
 
+# Copier le fichier .env.example et le renommer en .env
+RUN cp .env.example .env
+
 
 RUN composer install --no-dev --optimize-autoloader --no-scripts
 
