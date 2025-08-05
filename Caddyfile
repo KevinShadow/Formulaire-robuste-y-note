@@ -1,7 +1,18 @@
 formulaire-robuste-y-note.onrender.com {
     root * /var/www/html/public
 
+    @acme_challenge {
+        path /.well-known/acme-challenge/*
+    }
+
+    # Ne rien faire, juste servir les fichiers pour les challenges
+    handle @acme_challenge {
+        file_server
+    }
+
+    # Pour le reste des requêtes, passer au PHP FastCGI
     php_fastcgi localhost:9000
 
+    # Et servir les fichiers statiques normaux
     file_server
 }
