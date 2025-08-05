@@ -48,6 +48,7 @@ RUN mkdir -p /var/run/php
 
 
 #CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile"]
-CMD ["sh", "-c", "php-fpm -F & caddy run --config /etc/caddy/Caddyfile"]
+CMD ["sh", "-c", "php-fpm -F & caddy run --config /etc/caddy/Caddyfile --adapter caddyfile"]
+
 
 
