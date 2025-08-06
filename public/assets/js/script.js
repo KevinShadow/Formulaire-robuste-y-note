@@ -38,7 +38,19 @@ addressInput.addEventListener("input", async () => {
 });
 
 document.getElementById("client-form").addEventListener("submit", function (e) {
-    const errors = [];
+    document.querySelectorAll(".error").forEach((el) => el.remove());
+
+    let hasErrors = false;
+
+    const showError = (fieldId, message) => {
+        const field = document.getElementById(fieldId);
+        const error = document.createElement("div");
+        error.className = "error";
+        error.textContent = message;
+        field.insertAdjacentElement("afterend", error);
+        hasErrors = true;
+    };
+
     const fullName = document.getElementById("fullName").value.trim();
     const email = document.getElementById("email").value.trim();
     const phone = document.getElementById("phone").value.trim();
@@ -46,27 +58,33 @@ document.getElementById("client-form").addEventListener("submit", function (e) {
     const address = document.getElementById("address").value.trim();
 
     if (fullName.length < 3 || fullName.length > 50) {
-        errors.push("Le nom complet doit contenir entre 3 et 50 caractères.");
+        showError(
+            "fullName",
+            "Le nom complet doit contenir entre 3 et 50 caractères."
+        );
     }
 
     if (!/^[^@]+@[^@]+\.[^@]+$/.test(email)) {
-        errors.push("Adresse email invalide.");
+        showError("email", "Adresse email invalide.");
     }
 
     if (!/^[0-9]{9,12}$/.test(phone)) {
-        errors.push("Numéro de téléphone invalide.");
+        showError("phone", "Numéro de téléphone invalide.");
     }
 
     if (!dob) {
-        errors.push("Veuillez entrer une date de naissance.");
+        showError("dob", "Veuillez entrer une date de naissance.");
     }
 
     if (!address) {
-        errors.push("L'adresse est obligatoire.");
+        showError("address", "L'adresse est obligatoire.");
     }
 
-    if (errors.length > 0) {
+    if (hasErrors) {
         e.preventDefault();
-        alert(errors.join("\\n"));
+
+        setTimeout(() => {
+            document.querySelectorAll(".error").forEach((el) => el.remove());
+        }, 5000);
     }
 });
